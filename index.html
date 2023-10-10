@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="header">
+    <h1 style="color: rgb(24, 163, 22);">Weather <span style="color: rgb(11, 11, 12);">Pro</span></h1>
+
+  </div>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid" style="color: rgb(38, 39, 38);">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input id="city" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" id="submit" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div class="container px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">Today Overview</h2>
+    <div id="datetime-container" style="position: relative;
+      width: 200px;
+      height: 50px;
+      overflow: hidden;color: rgb(22, 66, 208);font-weight: bold;">
+
+      <div id="movin-text" style="color:blue;position: absolute;
+        animation: moveText 10s linear infinite;@keyframes moveText {
+  0% { left: 0; }
+  100% { left: 100%; }
+}">
+
+      </div>
+
+    </div>
+    <div id="cityname" style="color: black;text-decoration-color: black;"> </div>
+
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+          style="background-image: url('pics/windspeed.jpg');background-size: cover;background-position:center;border:1px solid rgb(14, 14, 14);">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Wind Speed <span id="wind_speed"></span></h3>
+            <ul class="d-flex list-unstyled mt-auto">
+
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#geo-fill"></use>
+                </svg>
+
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#calendar3"></use>
+                </svg>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+          style="background-image: url('pics/mintemp.jpg');background-size: cover;background-position:center;border:1px solid rgb(14, 14, 14);">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Min Temp<span id="min_temp"></span></h3>
+            <ul class="d-flex list-unstyled mt-auto">
+
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#geo-fill"></use>
+                </svg>
+
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#calendar3"></use>
+                </svg>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+          style="background-image: url('pics/max\ temp.jpg');background-size: cover;background-position:center;border:1px solid rgb(14, 14, 14);">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Max Temp <span id="max_temp"></span><span
+                id="Temp"></span></h3>
+            <ul class="d-flex list-unstyled mt-auto">
+
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#geo-fill"></use>
+                </svg>
+
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#calendar3"></use>
+                </svg>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+          style="background-image: url('pics/feels\ like.jpg');background-size: cover;background-position:center;border:1px solid rgb(14, 14, 14);">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-grey text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Feels Like <span id="feels_like"></span></h3>
+            <ul class="d-flex list-unstyled mt-auto">
+
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#geo-fill"></use>
+                </svg>
+
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#calendar3"></use>
+                </svg>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+          style="background-image: url('pics/temp.jpg');background-size: cover;background-position:center;border:1px solid rgb(14, 14, 14);">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Temp <br> <span id="temp"></span></h3>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+
+              </li>
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#geo-fill"></use>
+                </svg>
+
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#calendar3"></use>
+                </svg>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+          style="background-image: url('pics/humidity.jpg');background-size: cover;background-position:center;border:1px solid rgb(14, 14, 14);">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Humidity <span id="humidity"></span></h3>
+            <ul class="d-flex list-unstyled mt-auto">
+
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#geo-fill"></use>
+                </svg>
+
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em">
+                  <use xlink:href="#calendar3"></use>
+                </svg>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+
+  <script>
+    var container = document.getElementById("datetime-container");
+
+    function updateTime() {
+      var now = new Date();
+      var monthName = now.toLocaleString('en-US', { month: 'long' });
+
+      var dayAndMonth = now.toLocaleString('en-US', { weekday: 'long' });
+      var monthdate = now.getDate();
+
+
+
+
+      //console.log(monthName); // Output: July
+      var day = now.getDay();
+      var time = now.getFullYear();
+      container.innerHTML = dayAndMonth + "," + monthdate + " " + monthName + " " + time;
+
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+
+    var movingText = document.getElementById('datetime-container');
+    var position = 1;
+    var speed = 0;
+
+    function moveText() {
+      position += speed;
+      movingText.style.left = position + 'px';
+
+      if (position > window.innerWidth) {
+        position = -movingText.clientWidth;
+      }
+
+      requestAnimationFrame(moveText);
+    }
+
+    moveText();
+
+    // display of city name**************************************************************
+    // Get a reference to the div element where you want to display the city name.
+    const cityNameDisplay = document.getElementById('cityname');
+
+    // Get a reference to the search box input element.
+    const searchBox = document.getElementById('city'); // Assuming your input has an id="searchBox".
+
+    // Add an event listener to listen for the user's search action (e.g., button click or form submit).
+    const searchButton = document.getElementById('submit'); // Assuming you have a search button with id="searchButton".
+
+    searchButton.addEventListener('click', function () {
+      // Get the value entered by the user in the search box.
+      const searchedCity = searchBox.value;
+
+      // Update the content of the cityNameDisplay div with the searched city name.
+      cityNameDisplay.textContent = 'Showing results for ' + searchedCity;
+
+
+    });
+
+
+  </script>
+
+
+</body>
+
+</html>
